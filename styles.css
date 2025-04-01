@@ -1,0 +1,461 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #0088cc, #005580, #003366);
+    overflow: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 20%, rgba(255,255,255,0.03) 20%, rgba(255,255,255,0.03) 22%, transparent 22%), 
+                radial-gradient(circle, transparent 20%, rgba(255,255,255,0.03) 20%, rgba(255,255,255,0.03) 22%, transparent 22%);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    animation: bubbleBackground 30s linear infinite;
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%, rgba(255,255,255,0.05) 100%);
+    pointer-events: none;
+    z-index: -1;
+    animation: lightRays 15s infinite ease-in-out alternate;
+}
+
+.container {
+    text-align: center;
+    max-width: 100%;
+    padding: 30px;
+    position: relative;
+    z-index: 1;
+    background: rgba(0, 55, 100, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2), inset 0 0 30px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fish-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 30px;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+    position: relative;
+    z-index: 2;
+    animation: floatContainer 8s ease-in-out infinite;
+}
+
+.fish {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.fish-body {
+    fill: #ff9d5c;
+    stroke: #ff7a3d;
+    stroke-width: 2;
+    transition: all 0.5s ease;
+    filter: drop-shadow(0 0 8px rgba(255, 157, 92, 0.6));
+}
+
+.fish-eye {
+    fill: #fff;
+    stroke: #000;
+    stroke-width: 0.5;
+}
+
+.fish-pupil {
+    fill: #000;
+    stroke: none;
+}
+
+.fish-iris {
+    transition: all 0.3s ease;
+}
+
+.fish-mouth {
+    fill: none;
+    stroke: #333;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+}
+
+.fish-tail {
+    fill: #ff9d5c;
+    stroke: #ff7a3d;
+    stroke-width: 2;
+    transition: transform 0.3s ease;
+    transform-origin: 40px 50px;
+}
+
+.fish-fin-top, .fish-fin-bottom {
+    fill: #ffb380;
+    stroke: #ff7a3d;
+    stroke-width: 1.5;
+    transition: transform 0.3s ease;
+}
+
+.fish-fin-side {
+    fill: #ffb380;
+    stroke: #ff7a3d;
+    stroke-width: 1.5;
+    transition: transform 0.3s ease;
+}
+
+.fish-scale {
+    fill: #ffb380;
+    stroke: #ff7a3d;
+    stroke-width: 0.75;
+    transition: transform 0.3s ease, fill 0.3s ease;
+    filter: drop-shadow(0 0 1px rgba(255, 179, 128, 0.3));
+}
+
+.gills {
+    fill: none;
+    stroke: #ff7a3d;
+    stroke-width: 1;
+    stroke-linecap: round;
+}
+
+.water {
+    fill: #a6e1fa;
+    opacity: 0.5;
+    animation: waterAnim 10s infinite linear;
+}
+
+.shimmer {
+    fill: #fff;
+    opacity: 0.3;
+    animation: shimmerAnim 5s infinite alternate;
+}
+
+.seaweed {
+    animation: sway 4s infinite ease-in-out alternate;
+    transform-origin: bottom;
+}
+
+.coral {
+    animation: sway 3s infinite ease-in-out alternate-reverse;
+    transform-origin: bottom;
+}
+
+.bubble {
+    fill: #fff;
+    opacity: 0.7;
+    animation: float 3s infinite ease-in-out;
+}
+
+.bubble:nth-child(even) {
+    animation-delay: 0.5s;
+}
+
+.bubble:nth-child(3n) {
+    animation-delay: 1s;
+}
+
+.bubble:nth-child(4n) {
+    animation-delay: 1.5s;
+}
+
+.title {
+    font-size: 2.8rem;
+    color: #ff5f40;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 157, 92, 0.5);
+    animation: bounce 2s infinite;
+    background: linear-gradient(45deg, #ff5f40, #ffcc00, #ff9d5c);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.4));
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    letter-spacing: 3px;
+    position: relative;
+    padding: 15px 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    overflow: hidden;
+    animation: bounce 2s infinite, bgShift 8s infinite linear alternate;
+}
+
+.title::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    z-index: -1;
+    border-radius: 15px;
+    transform: scale(0.95);
+    box-shadow: 0 0 20px rgba(73, 175, 217, 0.7);
+    animation: pulse 3s infinite alternate;
+}
+
+.title::after {
+    content: "🐟";
+    position: absolute;
+    font-size: 1.5rem;
+    bottom: -8px;
+    right: 15px;
+    animation: swimEmoji 4s infinite linear;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.title-bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.title-bubble {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: titleBubbleFloat 3s infinite ease-in-out;
+}
+
+.fish-pattern {
+    fill: #ff8c4d;
+    opacity: 0.5;
+    stroke: #ff7a3d;
+    stroke-width: 0.5;
+    filter: drop-shadow(0 0 2px rgba(255, 140, 77, 0.4));
+}
+
+.lateral-line {
+    stroke-dasharray: 3,2;
+    animation: pulse 3s infinite alternate;
+}
+
+.eye-highlight {
+    filter: blur(0.3px);
+}
+
+.fish-spots {
+    fill: #ff7a3d;
+    opacity: 0.6;
+}
+
+.fish-shine {
+    fill: #fff;
+    opacity: 0.2;
+    animation: shimmerBody 4s infinite alternate;
+}
+
+@keyframes floatContainer {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(1deg);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px) scale(1.2);
+    }
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes bubbleBackground {
+    0% {
+        background-position: 0 0, 25px 25px;
+    }
+    100% {
+        background-position: 100px 100px, 125px 125px;
+    }
+}
+
+@keyframes waterAnim {
+    0% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes shimmerAnim {
+    0% {
+        transform: translateX(-5px);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateX(5px);
+        opacity: 0.4;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 20px rgba(73, 175, 217, 0.6);
+        transform: scale(0.95);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(73, 175, 217, 0.9);
+        transform: scale(1);
+    }
+}
+
+@keyframes swimEmoji {
+    0% {
+        transform: translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(-20px) rotate(-20deg);
+    }
+    50% {
+        transform: translateX(0) rotate(0deg);
+    }
+    75% {
+        transform: translateX(20px) rotate(20deg);
+    }
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+@keyframes bgShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes titleBubbleFloat {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+}
+
+@keyframes shimmerBody {
+    0% { opacity: 0.1; }
+    100% { opacity: 0.3; }
+}
+
+@keyframes lightRays {
+    0% {
+        opacity: 0.3;
+        transform: translateY(-10px) rotate(0deg) scale(1);
+    }
+    100% {
+        opacity: 0.7;
+        transform: translateY(10px) rotate(5deg) scale(1.1);
+    }
+}
+
+@keyframes swimSilhouette {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+        padding: 10px 20px;
+        letter-spacing: 2px;
+    }
+    
+    .title::after {
+        font-size: 1.2rem;
+        bottom: -5px;
+    }
+    
+    .fish-container {
+        max-width: 320px;
+    }
+    
+    .container {
+        padding: 20px;
+        margin: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.6rem;
+        padding: 8px 15px;
+        letter-spacing: 1px;
+    }
+    
+    .title::after {
+        font-size: 1rem;
+        right: 8px;
+    }
+    
+    .fish-container {
+        max-width: 280px;
+        margin-bottom: 20px;
+    }
+}

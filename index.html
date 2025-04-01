@@ -1,0 +1,149 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poisson d'Avril</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <svg class="background-elements" width="100%" height="100%" style="position:absolute; top:0; left:0; z-index:0; opacity:0.4;">
+        <defs>
+            <radialGradient id="sunlight" cx="50%" cy="0%" r="70%" fx="50%" fy="0%">
+                <stop offset="0%" stop-color="rgba(255,255,255,0.7)"/>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </radialGradient>
+        </defs>
+        <ellipse cx="50%" cy="-50" rx="300" ry="200" fill="url(#sunlight)"/>
+        
+        <path class="seaweed" d="M30,100 C35,80 25,70 35,55 C40,40 30,30 40,15" stroke="#3cb371" stroke-width="2" fill="none" 
+              style="animation: sway 7s infinite ease-in-out alternate; transform-origin: bottom;"/>
+        <path class="seaweed" d="M60,100 C55,75 65,60 55,45 C45,25 55,15 45,0" stroke="#2e8b57" stroke-width="2.5" fill="none"
+              style="animation: sway 6s infinite ease-in-out alternate-reverse; transform-origin: bottom;"/>
+        <path class="seaweed" d="M200,100 C190,80 200,60 185,40 C170,20 180,10 170,0" stroke="#3cb371" stroke-width="2" fill="none"
+              style="animation: sway 8s infinite ease-in-out alternate; transform-origin: bottom;"/>
+              
+        <path d="M300,80 C310,85 320,80 310,75 C320,70 310,65 300,70 Z" fill="#005580" opacity="0.3"
+              style="animation: swimSilhouette 15s infinite linear; transform-origin: center;">
+            <animateTransform attributeName="transform" type="translate" from="-350,0" to="350,0" dur="15s" repeatCount="indefinite"/>
+        </path>
+        <path d="M350,40 C365,45 380,40 365,35 C380,30 365,25 350,30 Z" fill="#005580" opacity="0.2"
+              style="animation: swimSilhouette 20s infinite linear; transform-origin: center;">
+            <animateTransform attributeName="transform" type="translate" from="350,0" to="-350,0" dur="20s" repeatCount="indefinite"/>
+        </path>
+        
+        <g style="animation: floatUpDown 8s infinite ease-in-out alternate; transform-origin: center;">
+            <path d="M100,200 C90,220 110,220 100,200" stroke="#ff9eea" stroke-width="1" fill="#ff9eea" fill-opacity="0.4"/>
+            <path d="M100,200 C95,230 105,230 100,200" stroke="#ff9eea" stroke-width="0.5" fill="none" 
+                  style="animation: jellyTentacle 3s infinite ease-in-out alternate;"/>
+            <path d="M97,200 C92,225 102,225 97,200" stroke="#ff9eea" stroke-width="0.5" fill="none"
+                  style="animation: jellyTentacle 2.5s infinite ease-in-out alternate-reverse;"/>
+            <path d="M103,200 C98,225 108,225 103,200" stroke="#ff9eea" stroke-width="0.5" fill="none"
+                  style="animation: jellyTentacle 3.5s infinite ease-in-out alternate;"/>
+            <animateTransform attributeName="transform" type="translate" from="0,0" to="20,-50" dur="8s" repeatCount="indefinite" additive="sum"/>
+        </g>
+    </svg>
+    
+    <svg width="100%" height="60" style="position:absolute; bottom:0; left:0; z-index:0;">
+        <path d="M0,60 C50,40 100,50 150,30 C200,50 250,20 300,40 C350,30 400,50 450,20 C500,40 550,30 600,50 C650,20 700,40 800,30 L800,60 L0,60 Z" 
+              fill="#d2b48c" opacity="0.6"/>
+        <circle cx="100" cy="45" r="2" fill="#d2b48c" opacity="0.7"/>
+        <circle cx="150" cy="50" r="1.5" fill="#d2b48c" opacity="0.7"/>
+        <circle cx="220" cy="48" r="2" fill="#d2b48c" opacity="0.7"/>
+        <circle cx="280" cy="52" r="1.2" fill="#d2b48c" opacity="0.7"/>
+        <circle cx="350" cy="46" r="1.8" fill="#d2b48c" opacity="0.7"/>
+    </svg>
+    
+    <div class="container">
+        <div class="fish-container">
+            <svg class="fish" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="waterPattern" patternUnits="userSpaceOnUse" width="200" height="20" patternTransform="rotate(0)">
+                        <path d="M0,10 Q25,20 50,10 T100,10 T150,10 T200,10" fill="none" stroke="#88c9ff" stroke-width="0.5" opacity="0.3"/>
+                    </pattern>
+                </defs>
+                <rect class="water" x="0" y="0" width="200" height="100" rx="10" ry="10" fill="url(#waterPattern)"/>
+                
+                <path class="shimmer" d="M20,30 Q50,20 80,30 T140,30 T190,30 V10 H10 Z" />
+                
+                <path class="seaweed" d="M10,100 C15,90 5,85 10,75 C15,65 5,60 10,50" stroke="#29a329" stroke-width="1.5" fill="none"/>
+                <path class="seaweed" d="M190,100 C185,85 195,75 185,65 C180,55 190,45 185,35" stroke="#29a329" stroke-width="1.5" fill="none"/>
+                <path class="coral" d="M15,100 C20,95 22,90 15,85 C12,80 20,75 25,80" stroke="#ff6666" stroke-width="1.5" fill="none"/>
+                
+                <path class="fish-tail" d="M40,50 C25,65 20,35 40,50" />
+                
+                <path class="fish-body" d="M150,50 C120,20 80,20 50,50 C80,80 120,80 150,50 Z" />
+                
+                <path class="fish-shine" d="M70,40 C90,35 110,35 130,40 C110,30 90,30 70,40 Z" />
+                <path class="fish-shine" d="M60,50 C90,42 110,42 140,50 C110,45 90,45 60,50 Z" />
+                
+                <path class="fish-pattern" d="M100,35 C105,30 110,35 105,40 C100,45 95,40 100,35 Z" />
+                <path class="fish-pattern" d="M85,45 C90,40 95,45 90,50 C85,55 80,50 85,45 Z" />
+                <path class="fish-pattern" d="M115,45 C120,40 125,45 120,50 C115,55 110,50 115,45 Z" />
+                <path class="fish-pattern" d="M105,55 C110,50 115,55 110,60 C105,65 100,60 105,55 Z" />
+                <path class="fish-pattern" d="M95,60 C100,55 105,60 100,65 C95,70 90,65 95,60 Z" />
+                
+                <circle class="fish-spots" cx="70" cy="45" r="2" />
+                <circle class="fish-spots" cx="80" cy="55" r="1.5" />
+                <circle class="fish-spots" cx="95" cy="60" r="2" />
+                <circle class="fish-spots" cx="110" cy="40" r="1.5" />
+                <circle class="fish-spots" cx="125" cy="55" r="2" />
+                <circle class="fish-spots" cx="115" cy="60" r="1.8" />
+                <circle class="fish-spots" cx="85" cy="35" r="1.6" />
+                <circle class="fish-spots" cx="105" cy="30" r="1.5" />
+                
+                <path class="lateral-line" d="M50,50 C80,50 120,50 150,50" stroke="#ff7a3d" stroke-width="0.75" stroke-dasharray="2,2" fill="none"/>
+                
+                <path class="gills" d="M125,40 C125,45 125,55 125,60" />
+                <path class="gills" d="M115,35 C115,45 115,55 115,65" />
+                <path class="gills" d="M135,37 C135,45 135,55 135,63" />
+                
+                <path class="fish-fin-top" d="M100,20 C115,5 90,10 100,20" />
+                <path class="fish-fin-lines" d="M100,20 C105,15 110,10 115,5" stroke="#ff7a3d" stroke-width="0.5" fill="none" />
+                <path class="fish-fin-lines" d="M100,20 C103,15 106,10 109,8" stroke="#ff7a3d" stroke-width="0.5" fill="none" />
+                <path class="fish-fin-lines" d="M100,20 C98,15 96,10 94,8" stroke="#ff7a3d" stroke-width="0.5" fill="none" />
+                
+                <path class="fish-fin-bottom" d="M100,80 C115,95 90,90 100,80" />
+                <path class="fish-fin-lines" d="M100,80 C105,85 110,90 115,95" stroke="#ff7a3d" stroke-width="0.5" fill="none" />
+                <path class="fish-fin-lines" d="M100,80 C103,85 106,90 109,92" stroke="#ff7a3d" stroke-width="0.5" fill="none" />
+                <path class="fish-fin-lines" d="M100,80 C98,85 96,90 94,92" stroke="#ff7a3d" stroke-width="0.5" fill="none" />
+                
+                <path class="fish-fin-side" d="M120,50 C130,40 140,50 130,55" />
+                <path class="fish-fin-lines" d="M120,50 C125,47 130,45 135,47" stroke="#ff7a3d" stroke-width="0.5" fill="none" />
+                <path class="fish-fin-lines" d="M120,50 C125,50 130,50 135,51" stroke="#ff7a3d" stroke-width="0.5" fill="none" />
+                
+                <path class="fish-scale" d="M120,40 C125,35 115,35 120,40" />
+                <path class="fish-scale" d="M110,35 C115,30 105,30 110,35" />
+                <path class="fish-scale" d="M100,30 C105,25 95,25 100,30" />
+                <path class="fish-scale" d="M120,60 C125,65 115,65 120,60" />
+                <path class="fish-scale" d="M110,65 C115,70 105,70 110,65" />
+                <path class="fish-scale" d="M100,70 C105,75 95,75 100,70" />
+                <path class="fish-scale" d="M90,35 C95,30 85,30 90,35" />
+                <path class="fish-scale" d="M80,40 C85,35 75,35 80,40" />
+                <path class="fish-scale" d="M90,65 C95,70 85,70 90,65" />
+                <path class="fish-scale" d="M80,60 C85,65 75,65 80,60" />
+                <path class="fish-scale" d="M70,45 C75,40 65,40 70,45" />
+                <path class="fish-scale" d="M70,55 C75,60 65,60 70,55" />
+                
+                <circle class="fish-eye" cx="135" cy="45" r="6" />
+                <circle class="fish-iris" cx="135" cy="45" r="4.5" fill="#4d88ff" />
+                <circle class="fish-pupil" cx="137" cy="45" r="3" />
+                <circle class="eye-highlight" fill="#fff" cx="134" cy="43" r="1.5" />
+                <circle class="eye-highlight" fill="#fff" cx="132" cy="45" r="0.8" />
+                
+                <path class="fish-mouth" d="M148,50 C145,53 145,47 148,50" />
+                
+                <circle class="bubble" cx="30" cy="40" r="3" />
+                <circle class="bubble" cx="20" cy="45" r="2" />
+                <circle class="bubble" cx="10" cy="35" r="1.5" />
+                <circle class="bubble" cx="25" cy="30" r="1" />
+                <circle class="bubble" cx="15" cy="50" r="2.5" />
+                <circle class="bubble" cx="10" cy="25" r="2" />
+                <circle class="bubble" cx="35" cy="25" r="1.8" />
+            </svg>
+        </div>
+        <h1 class="title">Poisson d'Avril !</h1>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
